@@ -1,0 +1,122 @@
+<?php
+/**
+ * @package     Joomla.Site
+ * @subpackage  mod_menu
+ *
+ * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @license     GNU General Public License version 2 or later; see LICENSE.txt
+ */
+
+defined('_JEXEC') or die;
+// Note. It is important to remove spaces between elements.
+$navstyle = ($params->get('navstyle') == 'default')?'':$params->get('navstyle');
+$navposition = ($params->get('navposition') == 'default')?'':$params->get('navposition');
+?>
+
+<!--<div class="navbar <?=$navstyle?> <?=$navposition?>">-->
+    <div class="navbar-inner <?=$navstyle?> <?=$navposition?>">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="container">
+            <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </a>
+        <!-- Be sure to leave the brand out there if you want it shown -->
+        <?php if($params->get('navbrand') && $params->get('navbrand') != ''):?>
+           <a class="brand" href=""><?=$params->get('navbrand')?></a>   
+        <?php endif;?>
+        <div class="nav-collapse collapse">
+            <ul class="nav navbar-nav menu<?php echo $class_sfx;?>"<?php
+                $tag = '';
+
+                if ($params->get('tag_id') != null)
+                {
+                        $tag = $params->get('tag_id') . '';
+                        echo ' id="' . $tag . '"';
+                }
+            ?>>
+            <?php
+                foreach ($list as $i => &$item)
+                {
+                    $class = 'item-' . $item->id;
+
+                    if ($item->id == $active_id)
+                    {
+                            $class .= ' current';
+                    }
+
+                    if (in_array($item->id, $path))
+                    {
+                            $class .= ' active';
+                    }
+                    elseif ($item->type == 'alias')
+                    {
+                            $aliasToId = $item->params->get('aliasoptions');
+
+                            if (count($path) > 0 && $aliasToId == $path[count($path) - 1])
+                            {
+                                    $class .= ' active';
+                            }
+                            elseif (in_array($aliasToId, $path))
+                            {
+                                    $class .= ' alias-parent-active';
+                            }
+                    }
+
+                    if ($item->type == 'separator')
+                    {
+                            $class .= ' divider';
+                    }
+
+                    if ($item->deeper)
+                    {
+                            $class .= ' dropdown deeper';
+                    }
+
+                    if ($item->parent)
+                    {
+                            $class .= ' dropdown parent';
+                    }
+
+                    if (!empty($class))
+                    {
+                            $class = ' class="' . trim($class) . '"';
+                    }
+
+                    echo '<li' . $class . ' >';
+                    // Render the menu item.
+                    switch ($item->type) :
+                            case 'separator':
+                            case 'url':
+                            case 'component':
+                            case 'heading':
+                                    require JModuleHelper::getLayoutPath('mod_bootstrapmenu', 'default_' . $item->type);
+                                    break;
+
+                            default:
+                                    require JModuleHelper::getLayoutPath('mod_bootstrapmenu', 'default_url');
+                                    break;
+                    endswitch;
+                    // The next item is deeper.
+                    if ($item->deeper)
+                    {
+                            echo '<ul class="dropdown-menu">';
+                    }
+                    elseif ($item->shallower)
+                    {
+                            // The next item is shallower.
+                            echo '</li>';
+                            echo str_repeat('</ul></li>', $item->level_diff);
+                    }
+                    else
+                    {
+                            // The next item is on the same level.
+                            echo '</li>';
+                    }
+                }
+                ?></ul>
+            </div>
+        </div>
+    </div>
+<!--</div>-->

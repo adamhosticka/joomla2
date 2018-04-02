@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension version="3.8" type="template">
+	<name>Adam´s template</name>
+	<creationDate>2008-05-01</creationDate>
+	<author>John Doe</author>
+	<authorEmail>john@example.com</authorEmail>
+	<authorUrl>http://www.example.com</authorUrl>
+	<copyright>John Doe 2008</copyright>
+	<license>GNU/GPL</license>
+	<version>1.0.2</version>
+	<description>Adam´s template</description>
+	<files>
+		<filename>index.php</filename>
+                <filename>index.html</filename>
+		<filename>templateDetails.xml</filename>
+                <filename>favicon.ico</filename>
+		<folder>images</folder>
+		<folder>css</folder>
+                <folder>js</folder>
+                <folder>html</folder>
+	</files>
+	<positions>
+		<position>menu</position>
+		<position>showcase</position>
+		<position>box1</position>
+		<position>box2</position>
+		<position>box3</position>
+		<position>box4</position>
+		<position>box5</position>
+		<position>box6</position>
+	</positions>
+        
+        <config>
+            <fields name="params">
+                <fieldset name="general" label="General">
+                    <field name="logo_text" type="text" label="Logo Text" description="Enter your logo text"/>
+                    <field name="copyright_text" type="text" label="Copyright Text" description="Enter your copyright text"/>
+                </fieldset>
+            </fields>
+        </config>
+</extension>

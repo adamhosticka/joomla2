@@ -1,0 +1,37 @@
+
+.widget-title {
+    color: #FFF;
+    font-family: "Arial CE","Helvetica CE",Arial,Verdana,lucida,sans-serif;
+    font-size: 13px;
+    font-weight: bold;
+    margin: -8px -8px 8px;
+    padding: 4px 8px;
+    text-shadow: none;
+    background-color: black;
+}
+
+h4 {
+    line-height: 0.7;
+}
+
+
+.hovno {
+    color: orange;
+}
+
+.hovno3 {
+    min-height: 49px;
+    display: inline;
+    color: #000;
+    font-family: "Arial CE","Helvetica CE",Arial,Verdana,lucida,sans-serif;
+    font-size: 13px;
+    font-weight: normal;
+    border: none;
+    padding: 0 0 4px;
+    list-style: none;
+    vertical-align: baseline;
+}
+
+p {
+    margin: 0;
+}

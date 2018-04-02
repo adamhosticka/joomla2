@@ -1,0 +1,10 @@
+
+.widget-title {
+    color: #FFF;
+    font-family: "Arial CE","Helvetica CE",Arial,Verdana,lucida,sans-serif;
+    font-size: 13px;
+    font-weight: bold;
+    margin: -8px -8px 8px;
+    padding: 4px 8px;
+    text-shadow: none;
+}
