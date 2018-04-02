@@ -112,6 +112,10 @@
                                         <b>
                                             6. Pokud se Vám to nelíbí, nečtěte to.
                                         </b>
+                                        </br>
+                                        <b>
+                                            Prvni zmena
+                                        </b>
                                     </p>
                                 </div>
                             </div> 
